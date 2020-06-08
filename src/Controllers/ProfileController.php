@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Intervention\Image\ImageManagerStatic as Image;
 use Aliabdulaziz\LaravelExtendedUser\Requests\UpdateUserProfile;
 
@@ -24,7 +25,7 @@ class ProfileController extends Controller
         $user->profile = unserialize($user->profile);
         $user->image = (
             isset($user->profile['image'])
-        ) ? $user->profile['image'] : 'images/user-icon.svg';
+        ) ? $user->profile['image'] : 'assets/images/user-icon.svg';
         return $user;
     }
 
@@ -68,7 +69,7 @@ class ProfileController extends Controller
         unset($user->image);
 
         // Add the data to the profile
-        $path = $user->profile['image'];
+        $path = $user->profile['image'] ?? "";
 
         if ($request->image) {
             $path = $this->image($request->image);
@@ -77,11 +78,12 @@ class ProfileController extends Controller
         $data = $request->except(['_token', '_method', 'name', 'image']);
         $data['image'] = $path;
         $user->profile = serialize($data);
+        $user->name = $request->get('name');
 
         // save the changes
         $user->save();
 
-        return redirect('profile')->with('status', 'Profile updated successfully!');
+        return redirect('profile')->with('status', 'Perfil atualizado com sucesso!');
     }
 
     /**
@@ -95,13 +97,13 @@ class ProfileController extends Controller
         if (is_file($image)) {
 
             $user   = auth()->user();
-            
+
             $file   = $image;
-            $name   = str_random(10).'.'.$file->extension();
+            $name   = Str::random(10).'.'.$file->extension();
             $dir    = 'public/user/'.$user->id;
 
             // Delete old image if existing
-            if (isset($user->profile)) {
+            if (isset($user->profile) && $user->profile['image'] != "") {
 
                 $profile = $user->profile;
 
@@ -127,7 +129,7 @@ class ProfileController extends Controller
             $file = Image::make($file)->fit(128);
 
             // Create a directory for the image if not existing
-            if (!file_exists(storage_path('app/'.$dir))) {        
+            if (!file_exists(storage_path('app/'.$dir))) {
                 Storage::makeDirectory($dir);
             }
 
@@ -137,9 +139,9 @@ class ProfileController extends Controller
             // Create image icon and store it with the image
             $icon = Image::make($file)->fit(32);
             $icon->save(storage_path('app/'.$dir).'/sm-'.$name);
-            
+
             // return image public path
-            return 'storage/user/'.$user->id.'/'.$name; 
+            return 'storage/user/'.$user->id.'/'.$name;
         }
 
         return null;
@@ -185,6 +187,6 @@ class ProfileController extends Controller
 
         $user->save();
 
-        return redirect('profile')->with('status', 'Profile image removed successfully!');
+        return redirect('profile')->with('status', 'Imagem de perfil removida com sucesso!');
     }
 }

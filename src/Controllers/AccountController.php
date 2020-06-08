@@ -5,6 +5,7 @@ namespace Aliabdulaziz\LaravelExtendedUser\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Aliabdulaziz\LaravelExtendedUser\Rules\MatchingUserPassword;
 use Aliabdulaziz\LaravelExtendedUser\Requests\ChangeUserPassword;
@@ -31,13 +32,17 @@ class AccountController extends Controller
      */
     public function update(ChangeUserPassword $request)
     {
+        $this->validate($request, [
+            'current_password' => ['required', 'string', 'min:6', new MatchingUserPassword],
+        ]);
+
         $user = auth()->user();
 
         $user->password = Hash::make($request->new_password);
 
         $user->save();
 
-        return redirect('account')->with('status', 'Psssword changed successfully!');
+        return redirect('account')->with('status', 'Senha alterada com sucesso!');
     }
 
     /**
@@ -71,11 +76,11 @@ class AccountController extends Controller
         if (file_exists(storage_path('app/public/user'))) {
             Storage::deleteDirectory('public/user');
         }
-        
+
         auth()->logout();
 
         $user->delete();
 
-        return redirect('/')->with('status', 'Your account has been deleted successfully!');
+        return redirect('/')->with('status', 'Sua conta foi apagada com sucesso!');
     }
 }

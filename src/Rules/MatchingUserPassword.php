@@ -39,6 +39,6 @@ class MatchingUserPassword implements Rule
      */
     public function message()
     {
-        return 'The :attribute you entered is in-correct.';
+        return 'A senha digitada esta incorreta.';
     }
 }
