@@ -4,8 +4,8 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Ali Abdulaziz",
-            "email": "ali_almancie@hotmail.com"
+            "name": "Thiago R Moreira",
+            "email": "loganguns@gmail.com"
         }
     ],
     "require": {
@@ -13,16 +13,16 @@
     },
     "autoload": {
         "psr-4": {
-            "Aliabdulaziz\\LaravelExtendedUser\\": "src/"
+            "ThiagoRMoreira\\LaravelExtendedUser\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Aliabdulaziz\\LaravelExtendedUser\\LaravelExtendedUserServiceProvider"
+                "ThiagoRMoreira\\LaravelExtendedUser\\LaravelExtendedUserServiceProvider"
             ],
             "aliases": {
-                "ExtendedUser": "Aliabdulaziz\\LaravelExtendedUser\\LaravelExtendedUserFacade"
+                "ExtendedUser": "ThiagoRMoreira\\LaravelExtendedUser\\LaravelExtendedUserFacade"
             }
         }
     }

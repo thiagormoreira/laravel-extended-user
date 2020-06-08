@@ -1,6 +1,6 @@
 <?php
 
-namespace Aliabdulaziz\LaravelExtendedUser;
+namespace ThiagoRMoreira\LaravelExtendedUser;
 
 use Illuminate\Support\ServiceProvider;
 

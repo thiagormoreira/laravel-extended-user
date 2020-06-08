@@ -1,6 +1,6 @@
 <?php
 
-namespace Aliabdulaziz\LaravelExtendedUser\Rules;
+namespace ThiagoRMoreira\LaravelExtendedUser\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 

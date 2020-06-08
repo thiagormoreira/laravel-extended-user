@@ -1,6 +1,6 @@
 <?php
 
-namespace Aliabdulaziz\LaravelExtendedUser\Requests;
+namespace ThiagoRMoreira\LaravelExtendedUser\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

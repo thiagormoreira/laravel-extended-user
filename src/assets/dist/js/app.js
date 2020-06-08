@@ -47585,7 +47585,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "vendor\\aliabdulaziz\\laravel-extended-user\\src\\assets\\src\\js\\components\\ExampleComponent.vue"
+Component.options.__file = "vendor\\thiagormoreira\\laravel-extended-user\\src\\assets\\src\\js\\components\\ExampleComponent.vue"
 
 /* hot reload */
 if (false) {(function () {

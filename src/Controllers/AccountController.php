@@ -1,14 +1,14 @@
 <?php
 
-namespace Aliabdulaziz\LaravelExtendedUser\Controllers;
+namespace ThiagoRMoreira\LaravelExtendedUser\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
-use Aliabdulaziz\LaravelExtendedUser\Rules\MatchingUserPassword;
-use Aliabdulaziz\LaravelExtendedUser\Requests\ChangeUserPassword;
+use ThiagoRMoreira\LaravelExtendedUser\Rules\MatchingUserPassword;
+use ThiagoRMoreira\LaravelExtendedUser\Requests\ChangeUserPassword;
 
 class AccountController extends Controller
 {
@@ -27,7 +27,7 @@ class AccountController extends Controller
     /**
      * Update user own account.
      *
-     * @param  \Aliabdulaziz\LaravelExtendedUser\Requests\ChangeUserPassword  $request
+     * @param  \ThiagoRMoreira\LaravelExtendedUser\Requests\ChangeUserPassword  $request
      * @return \Illuminate\Http\Response
      */
     public function update(ChangeUserPassword $request)

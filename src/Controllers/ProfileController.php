@@ -1,6 +1,6 @@
 <?php
 
-namespace Aliabdulaziz\LaravelExtendedUser\Controllers;
+namespace ThiagoRMoreira\LaravelExtendedUser\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\ImageManagerStatic as Image;
-use Aliabdulaziz\LaravelExtendedUser\Requests\UpdateUserProfile;
+use ThiagoRMoreira\LaravelExtendedUser\Requests\UpdateUserProfile;
 
 
 class ProfileController extends Controller
@@ -57,7 +57,7 @@ class ProfileController extends Controller
     /**
      * Update user own profile.
      *
-     * @param  \Aliabdulaziz\LaravelExtendedUser\Requests\UpdateUserProfile  $request
+     * @param  \ThiagoRMoreira\LaravelExtendedUser\Requests\UpdateUserProfile  $request
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateUserProfile $request)
